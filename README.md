@@ -14,7 +14,7 @@ A command-line application for encrypting and decrypting text using Caesar ciphe
 *(do not use this yet)*
 
 ```bash
-git clone <https://github.com/kolaschiii6/turbo-invention>
+git clone https://github.com/kolaschiii6/turbo-invention
 cd text-encryption-cli
 pip install -r requirements.txt
 ```
