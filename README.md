@@ -21,6 +21,16 @@ pip install -r requirements.txt
 **OR**
 Download a lightweight .exe distributive from [Releases](https://github.com/kolaschiii6/turbo-invention/releases)
 
+To run the application using Docker, use the following commands:
+
+```bash
+# Build the image
+docker build -t crypto-app .
+
+# Run the container (using -it for interactive CLI)
+docker run -it crypto-app
+```
+
 ## Team
 - zorianalesyk (cipher logic)
 - deduganchik10 (tests)
