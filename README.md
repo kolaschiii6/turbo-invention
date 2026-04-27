@@ -15,7 +15,6 @@ A command-line application for encrypting and decrypting text using Caesar ciphe
 - Easily accessible (doubtful)
 
 ## Installation
-*(do not use this yet)*
 
 ```bash
 git clone https://github.com/kolaschiii6/turbo-invention
