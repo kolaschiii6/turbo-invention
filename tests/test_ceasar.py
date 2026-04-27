@@ -2,7 +2,7 @@ import pytest
 from app.cipher import caesar_cipher
 
 
-#SZYFROWANIE
+# SZYFROWANIE
 def test_caesar_encrypt_basic():
     assert caesar_cipher("abc", 1) == "bcd"
 
@@ -23,7 +23,7 @@ def test_caesar_encrypt_large_shift():
     assert caesar_cipher("abc", 27) == "bcd"
 
 
-#DESZYFROWANIE
+# DESZYFROWANIE
 def test_caesar_decrypt_basic():
     assert caesar_cipher("bcd", 1, "decrypt") == "abc"
 
@@ -40,7 +40,7 @@ def test_caesar_decrypt_empty():
     assert caesar_cipher("", 10, "decrypt") == ""
 
 
-#SKOMPLIKOWANE
+# SKOMPLIKOWANE
 def test_encrypt_decrypt_cycle():
     text = "hello world"
     shift = 5
@@ -53,6 +53,7 @@ def test_encrypt_decrypt_different_shifts():
     text = "python"
     for shift in range(1, 10):
         assert caesar_cipher(caesar_cipher(text, shift), shift, "decrypt") == text
+
 
 if __name__ == "__main__":
     pytest.main()

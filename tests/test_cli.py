@@ -1,6 +1,4 @@
-import pytest
 import app.cli_menu as cli
-from app.cipher import caesar_cipher, rot13_encrypt, rot13_decrypt
 
 
 def test_ask_plain_text(monkeypatch):
@@ -24,7 +22,7 @@ def test_ask_plain_choices(monkeypatch):
 
     result = cli.ask_plain(
         "Выбери:",
-        choices=["A", "B", "C"]
+        choices=["A", "B", "C"],
     )
 
     assert result == "B"
@@ -32,16 +30,24 @@ def test_ask_plain_choices(monkeypatch):
 
 def test_main_caesar_encrypt(monkeypatch):
     inputs = iter([
-        "Szyfruj (Caesar)",  # action
-        "test",              # text
-        "5"                 # shift
+        "Szyfruj (Caesar)",
+        "test",
+        "5",
     ])
 
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
 
-    monkeypatch.setattr(cli, "caesar_cipher", lambda t, s, mode: f"{t}-encrypted")
+    monkeypatch.setattr(
+        cli,
+        "caesar_cipher",
+        lambda text, shift, mode: f"{text}-encrypted",
+    )
 
-    monkeypatch.setattr(cli, "ask_with_fallback", lambda *args, **kwargs: next(inputs))
+    monkeypatch.setattr(
+        cli,
+        "ask_with_fallback",
+        lambda *args, **kwargs: next(inputs),
+    )
 
     cli.main()
 
@@ -49,22 +55,29 @@ def test_main_caesar_encrypt(monkeypatch):
 def test_main_rot13_encrypt(monkeypatch):
     inputs = iter([
         "Szyfruj (ROT13)",
-        "hello"
+        "hello",
     ])
 
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
 
-    monkeypatch.setattr(cli, "rot13_encrypt", lambda t: "rot13-result")
-    monkeypatch.setattr(cli, "rot13_decrypt", lambda t: "rot13-result")
+    monkeypatch.setattr(cli, "rot13_encrypt", lambda text: "rot13-result")
+    monkeypatch.setattr(cli, "rot13_decrypt", lambda text: "rot13-result")
 
-    monkeypatch.setattr(cli, "ask_with_fallback", lambda *args, **kwargs: next(inputs))
+    monkeypatch.setattr(
+        cli,
+        "ask_with_fallback",
+        lambda *args, **kwargs: next(inputs),
+    )
 
     cli.main()
 
 
 def test_exit(monkeypatch):
-    monkeypatch.setattr(cli, "ask_with_fallback", lambda *args, **kwargs: "Wyjdź")
+    monkeypatch.setattr(
+        cli,
+        "ask_with_fallback",
+        lambda *args, **kwargs: "Wyjdź",
+    )
 
     result = cli.main()
     assert result is None
-

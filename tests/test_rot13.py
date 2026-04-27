@@ -1,6 +1,7 @@
 import pytest
 from app.cipher import rot13_encrypt, rot13_decrypt
 
+
 def test_rot13_encrypt_basic():
     assert rot13_encrypt("abc") == "nop"
 

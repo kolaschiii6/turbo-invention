@@ -37,4 +37,3 @@ def rot13_decrypt(text):
         else:
             result += char
     return result
-
