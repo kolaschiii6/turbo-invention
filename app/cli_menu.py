@@ -1,7 +1,6 @@
 import time
 import questionary
 from app.cipher import caesar_cipher, rot13_decrypt, rot13_encrypt
-from prompt_toolkit.output.win32 import NoConsoleScreenBufferError
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import track
@@ -22,7 +21,7 @@ def ask_with_fallback(message, choices=None, default=None):
         if choices is not None:
             return questionary.select(message, choices=choices).ask()
         return questionary.text(message, default=default or "").ask()
-    except NoConsoleScreenBufferError:
+    except Exception:
         return ask_plain(message, choices=choices, default=default)
 
 
