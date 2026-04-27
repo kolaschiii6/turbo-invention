@@ -29,6 +29,7 @@ def test_ask_plain_choices(monkeypatch):
 
 
 def test_main_caesar_encrypt(monkeypatch):
+    monkeypatch.setattr(cli, "wait_for_user", lambda: None)
     inputs = iter([
         "Szyfruj (Caesar)",
         "test",
@@ -53,6 +54,7 @@ def test_main_caesar_encrypt(monkeypatch):
 
 
 def test_main_rot13_encrypt(monkeypatch):
+    monkeypatch.setattr(cli, "wait_for_user", lambda: None)
     inputs = iter([
         "Szyfruj (ROT13)",
         "hello",
@@ -73,6 +75,7 @@ def test_main_rot13_encrypt(monkeypatch):
 
 
 def test_exit(monkeypatch):
+    monkeypatch.setattr(cli, "wait_for_user", lambda: None)
     monkeypatch.setattr(
         cli,
         "ask_with_fallback",

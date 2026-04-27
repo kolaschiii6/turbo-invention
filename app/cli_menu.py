@@ -53,6 +53,10 @@ def ask_plain(message, choices=None, default=None):
         console.print("[bold red]Błąd: wybrano nieprawidłową opcję.[/bold red]")
 
 
+def wait_for_user():
+    input("\nNaciśnij Enter, aby zakończyć...")
+
+
 def main():
     console.print(Panel.fit("[bold blue]Szyfrowanie haseł[/bold blue]", border_style="cyan"))
 
@@ -63,10 +67,12 @@ def main():
 
     if action == "Wyjdź" or action is None:
         console.print("[bold red]Do widzenia![/bold red]")
+        wait_for_user()
         return
 
     text = ask_with_fallback("Wprowadź tekst:")
     if text is None:
+        wait_for_user()
         return
 
     result = ""
@@ -78,6 +84,7 @@ def main():
             shift = int(shift_str)
         except (ValueError, TypeError):
             console.print("[bold red]Błąd: Przesunięcie musi być liczbą![/bold red]")
+            wait_for_user()
             return
 
         mode = "encrypt" if "Szyfruj" in action else "decrypt"
@@ -99,6 +106,7 @@ def main():
             border_style="green",
         )
     )
+    wait_for_user()
 
 
 if __name__ == "__main__":
