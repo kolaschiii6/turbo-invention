@@ -1,6 +1,7 @@
-#CLI
+# CLI
+rich
+questionary
+prompt_toolkit
 
-#Testing
-
-#whatever (rich, questionary)- libraries added
+# Testing
 
