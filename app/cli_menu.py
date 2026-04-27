@@ -4,6 +4,7 @@ from rich.panel import Panel
 from rich.progress import track
 import questionary
 from prompt_toolkit.output.win32 import NoConsoleScreenBufferError
+from app.cipher import caesar_cipher, rot13_encrypt, rot13_decrypt
 
 console = Console()
 

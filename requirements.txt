@@ -4,4 +4,4 @@ questionary
 prompt_toolkit
 
 # Testing
-
+pytest
