@@ -8,11 +8,11 @@
 A command-line application for encrypting and decrypting text using Caesar cipher and ROT13.
 
 ## Features
-- Caesar encryption and decryption (in development)
-- ROT13 encryption and decryption (in development)
-- Command-line interface (in development)
-- Automated tests with pytest (in development)
-- Easily accessible (doubtful)
+- Caesar encryption and decryption
+- ROT13 encryption and decryption
+- Command-line interface
+- Automated tests with pytest
+- Easily accessible
 
 ## Installation
 
