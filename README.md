@@ -1,3 +1,7 @@
+# turbo-invention
+
+[![CI](https://github.com/kolaschiii6/turbo-invention/actions/workflows/ci-docker.yml/badge.svg)](https://github.com/kolaschiii6/turbo-invention/actions/workflows/ci-docker.yml)
+
 # Text Encryption CLI
 
 ## Description
