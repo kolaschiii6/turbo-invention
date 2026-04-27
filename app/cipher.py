@@ -11,6 +11,8 @@ def caesar_cipher(text, shift, mode="encrypt"):
         else:
             result += char
     return result
+
+
 def rot13_encrypt(text):
     result = ""
     for char in text:
@@ -22,6 +24,8 @@ def rot13_encrypt(text):
         else:
             result += char
     return result
+
+
 def rot13_decrypt(text):
     result = ""
     for char in text:
@@ -33,3 +37,4 @@ def rot13_decrypt(text):
         else:
             result += char
     return result
+

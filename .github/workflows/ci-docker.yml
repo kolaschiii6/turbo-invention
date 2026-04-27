@@ -29,11 +29,11 @@ jobs:
 
       - name: Run linting
         run: |
-          flake8 app
+          flake8 app tests
 
       - name: Run unit tests
         run: |
-          pytest
+          python -m pytest
 
   docker:
     name: Build and push Docker image

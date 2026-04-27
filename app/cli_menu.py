@@ -1,10 +1,10 @@
 import time
+import questionary
+from app.cipher import caesar_cipher, rot13_decrypt, rot13_encrypt
+from prompt_toolkit.output.win32 import NoConsoleScreenBufferError
 from rich.console import Console
 from rich.panel import Panel
 from rich.progress import track
-import questionary
-from prompt_toolkit.output.win32 import NoConsoleScreenBufferError
-from app.cipher import caesar_cipher, rot13_encrypt, rot13_decrypt
 
 console = Console()
 
@@ -69,8 +69,6 @@ def main():
     text = ask_with_fallback("Wprowadź tekst:")
     if text is None:
         return
-
-    from app.cipher import caesar_cipher, rot13_encrypt, rot13_decrypt
 
     result = ""
 
