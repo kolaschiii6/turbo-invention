@@ -4,14 +4,14 @@ import app.cli_menu as cli
 def test_ask_plain_text(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "hello")
 
-    result = cli.ask_plain("Введите текст:")
+    result = cli.ask_plain("Enter text:")
     assert result == "hello"
 
 
 def test_ask_plain_default(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: "")
 
-    result = cli.ask_plain("Введите текст:", default="default_value")
+    result = cli.ask_plain("Enter text:", default="default_value")
     assert result == "default_value"
 
 
@@ -21,7 +21,7 @@ def test_ask_plain_choices(monkeypatch):
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
 
     result = cli.ask_plain(
-        "Выбери:",
+        "Choose:",
         choices=["A", "B", "C"],
     )
 
@@ -31,7 +31,7 @@ def test_ask_plain_choices(monkeypatch):
 def test_main_caesar_encrypt(monkeypatch):
     monkeypatch.setattr(cli, "wait_for_user", lambda: None)
     inputs = iter([
-        "Szyfruj (Caesar)",
+        "Encrypt (Caesar)",
         "test",
         "5",
     ])
@@ -56,7 +56,7 @@ def test_main_caesar_encrypt(monkeypatch):
 def test_main_rot13_encrypt(monkeypatch):
     monkeypatch.setattr(cli, "wait_for_user", lambda: None)
     inputs = iter([
-        "Szyfruj (ROT13)",
+        "Encrypt (ROT13)",
         "hello",
     ])
 
@@ -79,7 +79,7 @@ def test_exit(monkeypatch):
     monkeypatch.setattr(
         cli,
         "ask_with_fallback",
-        lambda *args, **kwargs: "Wyjdź",
+        lambda *args, **kwargs: "Exit",
     )
 
     result = cli.main()
