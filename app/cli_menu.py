@@ -8,7 +8,7 @@ from rich.progress import track
 console = Console()
 
 ACTIONS = [
-    "Szyfruj (Caesar)",
+    "Encrypt (Caesar)",
     "Deszyfruj (Caesar)",
     "Szyfruj (ROT13)",
     "Deszyfruj (ROT13)",
