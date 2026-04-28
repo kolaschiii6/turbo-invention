@@ -5,14 +5,14 @@
 # Text Encryption CLI
 
 ## Description
-A command-line application for encrypting and decrypting text using Caesar cipher and ROT13.
+A simple command-line application for encrypting and decrypting text using Caesar cipher and ROT13.
 
 ## Features
-- Caesar encryption and decryption
-- ROT13 encryption and decryption
-- Command-line interface
-- Automated tests with pytest
-- Easily accessible
+- Caesar cipher encryption and decryption
+- ROT13 cipher encryption and decryption
+- Interactive command-line interface
+- Automated testing with pytest
+- Lightweight and easy to use
 
 ## Installation
 
@@ -22,7 +22,7 @@ cd turbo-invention
 pip install -r requirements.txt
 ```
 **OR**
-Download a lightweight .exe distributive from [Releases](https://github.com/kolaschiii6/turbo-invention/releases)
+Alternatively, download the lightweight .exe distributive from [Releases](https://github.com/kolaschiii6/turbo-invention/releases)
 
 **To run the application using Docker,** 
 use the following commands:
@@ -40,4 +40,4 @@ docker run -it crypto-app
 - deduganchik10 (tests)
 - Nazar (CLI interface)
 - kolaschiii6 (documentation, Docker, distributables)
-- UNDMOTION (translation and minor quality of life changes)
+- UNDMOTION (translation and UX improvements)
