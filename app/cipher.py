@@ -36,4 +36,4 @@ def rot13_decrypt(text):
             result += chr(base + new_position)
         else:
             result += char
-    return result
+    return None
