@@ -34,6 +34,7 @@ def test_main_caesar_encrypt(monkeypatch):
         "Encrypt (Caesar)",
         "test",
         "5",
+        "Exit"
     ])
 
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
@@ -58,6 +59,7 @@ def test_main_rot13_encrypt(monkeypatch):
     inputs = iter([
         "Encrypt (ROT13)",
         "hello",
+        "Exit"
     ])
 
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))

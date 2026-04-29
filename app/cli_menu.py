@@ -70,6 +70,7 @@ def wait_for_user():
 
 
 def show_header():
+    console.clear()
     console.print(Align.center(f"[bold cyan]{BANNER}[/bold cyan]"))
     console.print(
         Align.center(
@@ -113,63 +114,63 @@ def render_result(action, original, result, shift):
 
 
 def main():
-    show_header()
+    while True:
+        show_header()
 
-    action = ask_with_fallback(
-        "What do you want to do?",
-        choices=ACTIONS,
-    )
+        action = ask_with_fallback(
+            "What do you want to do?",
+            choices=ACTIONS,
+        )
 
-    if action == "Exit" or action is None:
-        console.print("[bold cyan]Goodbye![/bold cyan]")
-        wait_for_user()
-        return
-
-    if action == "About":
-        show_about()
-        wait_for_user()
-        return
-
-    text = ask_with_fallback("Enter text:")
-    if text is None:
-        wait_for_user()
-        return
-
-    if not text.strip():
-        console.print("[bold red]Error: text is empty — nothing to process.[/bold red]")
-        wait_for_user()
-        return
-
-    result = ""
-    shift_value = None
-
-    if "Caesar" in action:
-        shift_str = ask_with_fallback("Enter shift (number):", default="3")
-
-        try:
-            shift = int(shift_str)
-        except (ValueError, TypeError):
-            console.print(
-                f"[bold red]Error: shift must be a whole number (got '{shift_str}').[/bold red]"
-            )
+        if action == "Exit" or action is None:
+            console.print("[bold cyan]Goodbye![/bold cyan]")
             wait_for_user()
-            return
+            break
 
-        shift_value = shift
-        mode = "encrypt" if "Encrypt" in action else "decrypt"
-        result = caesar_cipher(text, shift, mode=mode)
+        if action == "About":
+            show_about()
+            wait_for_user()
+            continue
 
-    elif "ROT13" in action:
-        if "Encrypt" in action:
-            result = rot13_encrypt(text)
-        else:
-            result = rot13_decrypt(text)
+        text = ask_with_fallback("Enter text:")
+        if text is None:
+            continue
 
-    for step in track(range(10), description=f"[green]Processing ({action})..."):
-        time.sleep(0.05)
+        if not text.strip():
+            console.print("[bold red]Error: text is empty — nothing to process.[/bold red]")
+            wait_for_user()
+            continue
 
-    console.print(render_result(action, text, result, shift_value))
-    wait_for_user()
+        result = ""
+        shift_value = None
+
+        if "Caesar" in action:
+            shift_str = ask_with_fallback("Enter shift (number):", default="3")
+
+            try:
+                shift = int(shift_str)
+            except (ValueError, TypeError):
+                console.print(
+                    f"[bold red]Error: shift must be a whole number (got '{shift_str}').[/bold red]"
+                )
+                wait_for_user()
+                continue
+
+            shift_value = shift
+            mode = "encrypt" if "Encrypt" in action else "decrypt"
+            result = caesar_cipher(text, shift, mode=mode)
+
+        elif "ROT13" in action:
+            if "Encrypt" in action:
+                result = rot13_encrypt(text)
+            else:
+                result = rot13_decrypt(text)
+
+        for step in track(range(10), description=f"[green]Processing ({action})..."):
+            time.sleep(0.05)
+
+        console.print(render_result(action, text, result, shift_value))
+        wait_for_user()
 
 
 if __name__ == "__main__":
